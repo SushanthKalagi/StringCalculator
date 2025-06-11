@@ -9,8 +9,8 @@ public class StringCalculatorTest {
 
     @Test
     public void emptyStringTest() throws Exception{
-        StringCalculator calc = new StringCalulator();
-        assertEquals(0,calc);
+        StringCalculator calculator = new StringCalculator();
+        assertEquals("0",calculator.Calc());
     }
 
 }
