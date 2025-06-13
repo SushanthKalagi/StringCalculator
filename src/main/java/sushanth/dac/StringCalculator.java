@@ -12,15 +12,20 @@ public class StringCalculator {
          if(input == null || input.isEmpty()){
               return "0";
          }
+         if(input.endsWith(",")){
+             throw new NumberFormatException("Number expected but EOF found");
+         }
+
+             // Initialize sum to 0
         Integer sum = 0;
-         if(input.contains(",")) {
+
              String[] numbers = input.split("[,\n]");
 
              for (String number : numbers) {
                  sum += Integer.parseInt(number);
              }
 
-         }
+
               return sum.toString();
 
 
