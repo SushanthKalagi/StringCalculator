@@ -64,5 +64,10 @@ public class StringCalculatorTest {
     }
 
 
-
+    @Test
+    public void customDelimiterTest() throws Exception{
+        StringCalculator calculator = new StringCalculator();
+        calculator.input = "//;\n1;2;3";
+        assertEquals("6",calculator.add());
+    }
 }
