@@ -20,6 +20,12 @@ public class StringCalculatorTest {
         assertEquals("5",calculator.add());
     }
 
+    @Test
+    public void multipleNumbersTest() throws Exception{
+        StringCalculator calculator = new StringCalculator();
+        calculator.input = "1,2,3";
+        assertEquals("6",calculator.add());
+    }
 
 
 }

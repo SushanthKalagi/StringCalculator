@@ -9,9 +9,20 @@ public class StringCalculator {
     public String parseInput(String input) {
 
 
-       Integer num = 0;
-       num =Integer.parseInt(input);
-       return num.toString();
+         if(input == null || input.isEmpty()){
+              return "0";
+         }
+        Integer sum = 0;
+         if(input.contains(",")) {
+             String[] numbers = input.split(",");
+
+             for (String number : numbers) {
+                 sum += Integer.parseInt(number);
+             }
+
+         }
+              return sum.toString();
+
 
 
     }
