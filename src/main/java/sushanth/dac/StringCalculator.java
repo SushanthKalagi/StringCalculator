@@ -15,6 +15,9 @@ public class StringCalculator {
          if(input.endsWith(",")){
              throw new NumberFormatException("Number expected but EOF found");
          }
+        if (input.contains(",\n")) {
+            throw new NumberFormatException("Number expected but '\\n' found");
+        }
 
              // Initialize sum to 0
         Integer sum = 0;

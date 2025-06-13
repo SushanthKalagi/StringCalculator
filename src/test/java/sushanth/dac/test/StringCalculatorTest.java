@@ -39,9 +39,17 @@ public class StringCalculatorTest {
         try {
 
             calculator.input = "1,2,";
+            calculator.add();
         } catch (NumberFormatException e) {
             assertEquals("Number expected but EOF found", e.getMessage());
         }
+
+       try{
+           calculator.input ="1,\n2";
+              calculator.add();
+       } catch (NumberFormatException e) {
+           assertEquals("Number expected but '\\n' found", e.getMessage());
+       }
     }
 
 
