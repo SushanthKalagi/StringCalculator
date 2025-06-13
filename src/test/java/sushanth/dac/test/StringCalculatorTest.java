@@ -10,7 +10,16 @@ public class StringCalculatorTest {
     @Test
     public void emptyStringTest() throws Exception{
         StringCalculator calculator = new StringCalculator();
-        assertEquals("0",calculator.Calc());
+        assertEquals("0",calculator.add());
     }
+
+    @Test
+    public  void singleNumberTest() throws Exception{
+        StringCalculator calculator = new StringCalculator();
+        calculator.input = "5";
+        assertEquals("5",calculator.add());
+    }
+
+
 
 }
