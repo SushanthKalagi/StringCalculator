@@ -52,6 +52,17 @@ public class StringCalculatorTest {
        }
     }
 
+    @Test
+    public void negativeNumberTest() throws Exception{
+        StringCalculator calculator = new StringCalculator();
+        try {
+            calculator.input = "1,-2,3";
+            calculator.add();
+        } catch (NumberFormatException e) {
+            assertEquals("Negative numbers are not allowed: -2", e.getMessage());
+        }
+    }
+
 
 
 }

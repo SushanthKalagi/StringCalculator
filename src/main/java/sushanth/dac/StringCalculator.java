@@ -25,6 +25,10 @@ public class StringCalculator {
              String[] numbers = input.split("[,\n]");
 
              for (String number : numbers) {
+                // Check for negative numbers
+                 if(number.startsWith("-")) {
+                     throw new NumberFormatException("Negative numbers are not allowed: " + number);
+                 }
                  sum += Integer.parseInt(number);
              }
 
