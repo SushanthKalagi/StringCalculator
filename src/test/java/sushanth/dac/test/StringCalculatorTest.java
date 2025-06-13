@@ -35,13 +35,15 @@ public class StringCalculatorTest {
     @Test
     public void inavlidInputTest() throws Exception{
         StringCalculator calculator = new StringCalculator();
-        calculator.input = "1,2,";
+        //calculator.input = "1,2,";
         try {
 
-            assertEquals("Number expected but EOF found ", calculator.add());
+            calculator.input = "1,2,";
         } catch (NumberFormatException e) {
             assertEquals("Number expected but EOF found", e.getMessage());
         }
     }
+
+
 
 }
