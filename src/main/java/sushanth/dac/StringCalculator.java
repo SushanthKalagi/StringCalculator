@@ -71,4 +71,17 @@ public class StringCalculator {
         return String.valueOf(sum);
 
     }
+    public String sub() {
+
+        if (input == "") {
+            return "0";
+        }
+        int[] numbers = parseInput(input);
+        int sub = numbers[0];
+        for (int i =1; i< numbers.length; i++) {
+            sub -= numbers[i];
+        }
+        return String.valueOf(sub);
+
+    }
 }
