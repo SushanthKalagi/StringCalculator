@@ -4,19 +4,23 @@ import java.util.regex.Pattern;
 
 public class StringCalculator {
     public String input;
+
     public StringCalculator() {
         this.input = "";
 
     }
-    public String parseInput(String input) {
+
+    public int[] parseInput(String input) {
 
 
-         if(input == null || input.isEmpty()){
-              return "0";
-         }
-         if(input.endsWith(",")){
-             throw new NumberFormatException("Number expected but EOF found");
-         }
+        if (input == null || input.isEmpty()) {
+            int[] emptyArray = new int[1];
+            emptyArray[0] = 0;
+            return emptyArray;
+        }
+        if (input.endsWith(",")) {
+            throw new NumberFormatException("Number expected but EOF found");
+        }
         if (input.contains(",\n")) {
             throw new NumberFormatException("Number expected but '\\n' found");
         }
@@ -30,37 +34,41 @@ public class StringCalculator {
             input = input.substring(delimiterEnd + 1);
         }
 
-             // Initialize sum to 0
+        // Initialize sum to 0
         Integer sum = 0;
 
-             String[] numbers = input.split(delimiter);
+        String[] numbers = input.split(delimiter);
+        int[] result = new int[numbers.length];
+        for (int i = 0; i < numbers.length; i++) {
+            // Check for negative numbers
+            String number = numbers[i];
+            if (number.startsWith("-")) {
+                throw new NumberFormatException("Negative numbers are not allowed: " + number);
+            }
+            result[i] = Integer.parseInt(number);
+        }
 
-             for (String number : numbers) {
-                // Check for negative numbers
-                 if(number.startsWith("-")) {
-                     throw new NumberFormatException("Negative numbers are not allowed: " + number);
-                 }
-                 sum += Integer.parseInt(number);
-             }
 
-
-              return sum.toString();
-
+        return result;
 
 
     }
+
     public String getInput() {
         return input;
     }
 
-    public String add(){
+    public String add() {
 
-        if(input == ""){
+        if (input == "") {
             return "0";
         }
-        else{
-            return parseInput(input);
+        int[] numbers = parseInput(input);
+        int sum = 0;
+        for (int n : numbers) {
+            sum += n;
         }
+        return String.valueOf(sum);
 
     }
 }
