@@ -84,4 +84,18 @@ public class StringCalculator {
         return String.valueOf(sub);
 
     }
+
+    public String mul() {
+
+        if (input == "") {
+            return "0";
+        }
+        int[] numbers = parseInput(input);
+        int mul = 1;
+        for (int n : numbers) {
+            mul *= n;
+        }
+        return String.valueOf(mul);
+
+    }
 }

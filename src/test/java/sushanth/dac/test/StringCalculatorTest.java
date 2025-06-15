@@ -9,58 +9,69 @@ import static org.junit.Assert.assertEquals;
 public class StringCalculatorTest {
 
     @Test
-    public void emptyStringTest() throws Exception {
+    public void emptyStringTest()  {
         StringCalculator calculator = new StringCalculator();
         assertEquals("0", calculator.add());
+        assertEquals("0", calculator.sub());
+        assertEquals("0", calculator.mul());
+
     }
 
     @Test
-    public void singleNumberTest() throws Exception {
+    public void singleNumberTest() {
         StringCalculator calculator = new StringCalculator();
         calculator.input = "5";
         assertEquals("5", calculator.add());
+        assertEquals("5", calculator.mul());
+        assertEquals("5", calculator.sub());
     }
 
     @Test
-    public void multipleNumbersTest() throws Exception {
+    public void multipleNumbersTest()  {
         StringCalculator calculator = new StringCalculator();
         calculator.input = "1,2,3";
         assertEquals("6", calculator.add());
+        assertEquals("6", calculator.mul());
+        assertEquals("-4", calculator.sub());
     }
 
     @Test
-    public void newLineTest() throws Exception {
+    public void newLineTest() {
         StringCalculator calculator = new StringCalculator();
         calculator.input = "1,2\n3";
         assertEquals("6", calculator.add());
+        assertEquals("6", calculator.mul());
+        assertEquals("-4", calculator.sub());
+
     }
 
     @Test
-    public void inavlidInputTest() throws Exception {
+    public void inavlidInputTest()  {
         StringCalculator calculator = new StringCalculator();
         //calculator.input = "1,2,";
         try {
 
             calculator.input = "1,2,";
             calculator.add();
+
         } catch (NumberFormatException e) {
             assertEquals("Number expected but EOF found", e.getMessage());
         }
 
         try {
             calculator.input = "1,\n2";
-            calculator.add();
+            calculator.sub();
         } catch (NumberFormatException e) {
             assertEquals("Number expected but '\\n' found", e.getMessage());
         }
     }
 
     @Test
-    public void negativeNumberTest() throws Exception {
+    public void negativeNumberTest()  {
         StringCalculator calculator = new StringCalculator();
         try {
             calculator.input = "1,-2,3";
-            calculator.add();
+            calculator.mul();
         } catch (NumberFormatException e) {
             assertEquals("Negative numbers are not allowed: -2", e.getMessage());
         }
@@ -68,17 +79,14 @@ public class StringCalculatorTest {
 
 
     @Test
-    public void customDelimiterTest() throws Exception {
+    public void customDelimiterTest()  {
 
         StringCalculator calculator = new StringCalculator();
         calculator.input = "//;\n1;2;3";
         assertEquals("6", calculator.add());
+        assertEquals("6", calculator.mul());
+        assertEquals("-4", calculator.sub());
     }
 
-    @Test
-    public void subtractionTest() {
-        StringCalculator calculator = new StringCalculator();
-        calculator.input = "5,3";
-        assertEquals("2", calculator.sub());
-    }
+
 }
